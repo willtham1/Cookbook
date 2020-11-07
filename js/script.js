@@ -1,8 +1,13 @@
 
 // Recipe puppy API starter
 // variable will be used to store user input later on.
-// var userInput = $('#userInput').val().trim()
-var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?pg=1&i=mushroom,tomato,steak,corn`;
+
+$('#search-button').on('click', function(event){
+    event.preventDefault()
+    var userInput = $('#userInput').val().trim()
+    userInput = userInput.replace(/ +/g, "")
+var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?pg=1&i=${userInput}`;
+console.log(userInput)
       $.ajax({
         url: recipeURL,
         method: "GET",
@@ -21,6 +26,7 @@ var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?pg=1&i
         
         }
       });
+})
 
 
 
@@ -29,7 +35,7 @@ var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?pg=1&i
 // API call works
 // variable will be used to store user input later on.
 // var ingredientURL = $('#ingredient').val().trim()
-var ingredientURL = `https://api.spoonacular.com/food/ingredients/substitutes?apiKey=fdea7c2ea8d1434eb3207d8b48260907&ingredientName=butter`
+var ingredientURL = `https://api.spoonacular.com/food/ingredients/substitutes?apiKey=fdea7c2ea8d1434eb3207d8b48260907&ingredientName=flour`
 
 $.ajax({
 
