@@ -1,16 +1,23 @@
 
 // Recipe puppy API starter
-// Does not work yet
-var userInput = $('#userInput').val()
-var recipeURL = `http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3`
-$.ajax({
+// var userInput = $('#userInput').val()
+var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?i=onions,garlic&q=omeletp=3`;
+      $.ajax({
+        url: recipeURL,
+        method: "GET",
+      }).then(function (response) {
+        console.log(JSON.parse(response));
 
-    url: recipeURL,
-    method: 'GET'
-}).then(function (response) {
-    console.log(response)
+        // Grab response with JSON, due to the response being returned as a string
+        var recipeList = JSON.parse(response)
+        for (var i = 0; i < recipeList.results.length; i++){
+            console.log('Recipe name: ' + recipeList.results[i].title)
+            console.log('Ingredient list: ' + recipeList.results[i].ingredients)
+        
+        }
+      });
 
-})
+
 
 
 // Spoonacular API starter
