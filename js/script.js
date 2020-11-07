@@ -1,7 +1,7 @@
 
 // Recipe puppy API starter
 // var userInput = $('#userInput').val()
-var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?i=onions,garlic&q=omeletp=3`;
+var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3`;
       $.ajax({
         url: recipeURL,
         method: "GET",
