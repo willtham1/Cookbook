@@ -37,6 +37,7 @@ $('#search-button').on('click', function(event){
 // Add replace button
 $('#replace-button').on('click', function(event){
     event.preventDefault()
+    replaceIngredient()
 
 })
 
@@ -50,14 +51,23 @@ function replaceIngredient() {
     var userIngredient = $('#userIngredient').val().trim()
     var apiKey = 'fdea7c2ea8d1434eb3207d8b48260907'
     var ingredientURL = `https://api.spoonacular.com/food/ingredients/substitutes?apiKey=${apiKey}&ingredientName=${userIngredient}`
-    
+    var results = $(`#new-ingredients`)
+    var ingredient = $(`#ingredient-name`)
+
+    // Reset display before adding new results
+    results.html('')
+    ingredient.html('')
+
+
     $.ajax({
         
         url: ingredientURL,
         method: 'GET'
     }).then(function (response) {
         console.log(response.message)
+        ingredient.html(`Substitutes for: ${userIngredient}`)
         for (var i = 0; i < response.substitutes.length; i++){
+            results.append(`<li>${response.substitutes[i]}</li>`)
             console.log(response.substitutes[i])
         }
     })
@@ -74,26 +84,21 @@ function generateRecipes() {
         method: "GET",
     }).then(function (response) {
         console.log(JSON.parse(response));
-        // recipe1-title
-        // recipe1-ingredients
         // Grab response with JSON, due to the response being returned as a string
         recipeList = JSON.parse(response)
         for (var i = 0; i < recipeList.results.length; i++) {
-            title = (recipeList.results[i].title.trim())
-            ingredients = (recipeList.results[i].ingredients)
-            url = recipeList.results[i].href
 
+            // Assign results to variables
+            var title = (recipeList.results[i].title.trim())
+            var ingredients = (recipeList.results[i].ingredients)
+            var url = recipeList.results[i].href
+            var image = recipeList.results[i].thumbnail
+
+            // Change the html of the recipe cards on the home page
             $(`#recipe${i+1}-title`).html(title)
             $(`#recipe${i+1}-ingredients`).html(ingredients)
-            $(`#recipe${i+1}-title`).attr('href', recipeList.results[i].href)
-            $(`#recipe${i+1}-image`).attr('src', recipeList.results[i].thumbnail)
-
-            // console.log('-------------------------')
-            // console.log('Recipe name: ' + recipeList.results[i].title.trim())
-            // console.log('Ingredient list: ' + recipeList.results[i].ingredients)
-            // console.log('Thumbnail: ' + recipeList.results[i].thumbnail)
-            // console.log('Link: ' + recipeList.results[i].href)
-            // console.log('-------------------------')
+            $(`#recipe${i+1}-title`).attr('href', url)
+            $(`#recipe${i+1}-image`).attr('src', image)
         };
     })
 }
