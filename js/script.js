@@ -44,7 +44,6 @@ $('#replace-button').on('click', function(event){
 // Spoonacular API starter
 // API call works
 // variable will be used to store user input later on.
-// var ingredientURL = $('#ingredient').val().trim()
 
 function replaceIngredient() {
     // Add replace ingredient text input field.
@@ -59,7 +58,7 @@ function replaceIngredient() {
     }).then(function (response) {
         console.log(response.message)
         for (var i = 0; i < response.substitutes.length; i++){
-            console.log(response.substitutes[i])            
+            console.log(response.substitutes[i])
         }
     })
 }
@@ -75,16 +74,26 @@ function generateRecipes() {
         method: "GET",
     }).then(function (response) {
         console.log(JSON.parse(response));
-
+        // recipe1-title
+        // recipe1-ingredients
         // Grab response with JSON, due to the response being returned as a string
         recipeList = JSON.parse(response)
         for (var i = 0; i < recipeList.results.length; i++) {
-            console.log('-------------------------')
-            console.log('Recipe name: ' + recipeList.results[i].title.trim())
-            console.log('Ingredient list: ' + recipeList.results[i].ingredients)
-            console.log('Thumbnail: ' + recipeList.results[i].thumbnail)
-            console.log('Link: ' + recipeList.results[i].href)
-            console.log('-------------------------')
+            title = (recipeList.results[i].title.trim())
+            ingredients = (recipeList.results[i].ingredients)
+            url = recipeList.results[i].href
+
+            $(`#recipe${i+1}-title`).html(title)
+            $(`#recipe${i+1}-ingredients`).html(ingredients)
+            $(`#recipe${i+1}-title`).attr('href', recipeList.results[i].href)
+            $(`#recipe${i+1}-image`).attr('src', recipeList.results[i].thumbnail)
+
+            // console.log('-------------------------')
+            // console.log('Recipe name: ' + recipeList.results[i].title.trim())
+            // console.log('Ingredient list: ' + recipeList.results[i].ingredients)
+            // console.log('Thumbnail: ' + recipeList.results[i].thumbnail)
+            // console.log('Link: ' + recipeList.results[i].href)
+            // console.log('-------------------------')
         };
     })
 }
