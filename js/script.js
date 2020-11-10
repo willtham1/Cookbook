@@ -1,6 +1,8 @@
 var pageNumber
 var recipeList
 
+
+// Display the previous page of results
 $('#previous-button').on('click', function(event){
     event.preventDefault()
     console.log('test')
@@ -12,6 +14,7 @@ $('#previous-button').on('click', function(event){
     } 
 })
 
+// Display the next page of results
 $('#next-button').on('click', function(event){
     event.preventDefault()
     console.log('Next')
@@ -24,40 +27,46 @@ $('#next-button').on('click', function(event){
 // Recipe puppy API
 $('#search-button').on('click', function(event){
     event.preventDefault()
-    // Start on page one of results
+    // Start on page one of results when search is clicked
     pageNumber = 1
-    // Remove erroneous text from user string    
     console.log(userInput)    
     generateRecipes()
     
 })
 
-// Add functionality to display the next page of results
+// Add replace button
+$('#replace-button').on('click', function(event){
+    event.preventDefault()
 
+})
 
 
 // Spoonacular API starter
 // API call works
 // variable will be used to store user input later on.
 // var ingredientURL = $('#ingredient').val().trim()
-var ingredientURL = `https://api.spoonacular.com/food/ingredients/substitutes?apiKey=fdea7c2ea8d1434eb3207d8b48260907&ingredientName=flour`
 
-$.ajax({
+function replaceIngredient() {
+    // Add replace ingredient text input field.
+    var userIngredient = $('#userIngredient').val().trim()
+    var apiKey = 'fdea7c2ea8d1434eb3207d8b48260907'
+    var ingredientURL = `https://api.spoonacular.com/food/ingredients/substitutes?apiKey=${apiKey}&ingredientName=${userIngredient}`
     
-    url: ingredientURL,
-    method: 'GET'
-}).then(function (response) {
-    console.log(response.message)
-    for (var i = 0; i < response.substitutes.length; i++){
-        console.log(response.substitutes[i])
+    $.ajax({
         
-    }
-    
-    
-})
+        url: ingredientURL,
+        method: 'GET'
+    }).then(function (response) {
+        console.log(response.message)
+        for (var i = 0; i < response.substitutes.length; i++){
+            console.log(response.substitutes[i])            
+        }
+    })
+}
 
 function generateRecipes() {
     var userInput = $('#userInput').val().trim()
+    // Remove erroneous text from user string    
     userInput = userInput.replace(/ +/g, "")
     var recipeURL = `https://cors-anywhere.herokuapp.com/recipepuppy.com/api/?p=${pageNumber}&i=${userInput}`;
     console.log(recipeURL)
