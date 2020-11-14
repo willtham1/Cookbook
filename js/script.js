@@ -122,7 +122,7 @@ $(`.save-button`).on('click', function(event){
     event.preventDefault()
     var recipeLink = $(this).siblings()[0].href
     var recipeName = $(this).siblings()[0].textContent
-    displayModal(recipeLink, recipeName)
+    recipeConfirm(recipeLink, recipeName)
 })
 
 // Add clear favorite button
@@ -167,11 +167,37 @@ function displayCard (){
 
 // Function to clear local storage when the clear favorites button is clicked.
 function clearFavorites (){
-    $(`.favDisplay`).html('')
+
+    var modal = $('#favoritesModal')
+    var close = $('.close')
+
+    var confirm = $('.confirm')
+    var decline = $('.decline')
+
+    modal.css('display', 'block')
+    
+    confirm.on('click', () =>{
+        $(`.favDisplay`).html('')
     localStorage.clear()
+        modal.css('display', 'none')
+    })
+    decline.on('click', () =>{
+        modal.css('display', 'none')
+    })
+
+
+    close.on('click', () => {
+            modal.css('display', 'none')
+        })
+
+    window.onclick = function(event) {
+        if(event.target==modal) {
+            modal.css('display', 'none')
+        }
+    }    
 }
 
-function displayModal (recipeLink, recipeName){
+function recipeConfirm (recipeLink, recipeName){
     var modal = $("#newModal")
     var close = $(".close")
 
