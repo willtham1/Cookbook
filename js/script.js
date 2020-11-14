@@ -115,16 +115,30 @@ function generateRecipes() {
 $(`.save-button`).on('click', function(event){
     event.preventDefault()
     var savedRecipe = $(this).siblings()[0].href
-    console.log($(this).siblings()[0].href)
-    storeFavorite(savedRecipe)
+    var recipeName = $(this).siblings()[0].textContent
+    storeFavorite(savedRecipe, recipeName)
 })
 
 
-function storeFavorite(favorite) {
+function storeFavorite(recipeLink, recipeName) {
     var favList = JSON.parse(localStorage.getItem("Favorite Recipes") || "[]")
-    favList.push({favorite})
+    favList.push({recipeName})
     localStorage.setItem('Favorite Recipes', JSON.stringify(favList))
+
+    var favLinks = JSON.parse(localStorage.getItem("Favorite Links") || "[]")
+    favLinks.push({recipeLink})
+    localStorage.setItem('Favorite Links', JSON.stringify(favLinks))
 }    
+
+function displayFavorite(){
+    var favList = JSON.parse(localStorage.getItem("Favorite Recipes") ||"[]")
+    var favLinks = JSON.parse(localStorage.getItem("Favorite Links") || "[]")
+    console.log(favLinks)
+    for(var i = 0; i< favList.length; i++){
+        // <a href="" id="recipe9-title"></a>
+            $(`.favDisplay`).append(`<a href= "${favLinks[i].recipeLink}">${favList[i].recipeName}</a><br>`)
+    }
+}
 
 function displayCard (){
     var recipeCards = document.querySelector('.recipe-card')
@@ -135,3 +149,5 @@ function displayCard (){
     }
 
 }
+
+displayFavorite()
