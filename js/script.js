@@ -103,6 +103,8 @@ function generateRecipes() {
             $(`#recipe${i+1}-title`).html(title)
             $(`#recipe${i+1}-ingredients`).html(ingredients)
             $(`#recipe${i+1}-title`).attr('href', url)
+
+            // Display the image if there is one, otherwise display a placeholder
             if(image){
                 $(`#recipe${i+1}-image`).attr('src', image)
             } else {
@@ -112,6 +114,8 @@ function generateRecipes() {
     })
 }
 
+
+// When a save button is clicked, grab the name and url, call local storage function
 $(`.save-button`).on('click', function(event){
     event.preventDefault()
     var savedRecipe = $(this).siblings()[0].href
@@ -119,7 +123,7 @@ $(`.save-button`).on('click', function(event){
     storeFavorite(savedRecipe, recipeName)
 })
 
-
+// Stores the recipe name and the URL into local storage.
 function storeFavorite(recipeLink, recipeName) {
     var favList = JSON.parse(localStorage.getItem("Favorite Recipes") || "[]")
     favList.push({recipeName})
@@ -130,16 +134,19 @@ function storeFavorite(recipeLink, recipeName) {
     localStorage.setItem('Favorite Links', JSON.stringify(favLinks))
 }    
 
+
+// Grabs the local storage information and shows the user their favorite recipe names with the link to the recipe.
 function displayFavorite(){
     var favList = JSON.parse(localStorage.getItem("Favorite Recipes") ||"[]")
     var favLinks = JSON.parse(localStorage.getItem("Favorite Links") || "[]")
     console.log(favLinks)
     for(var i = 0; i< favList.length; i++){
-        // <a href="" id="recipe9-title"></a>
             $(`.favDisplay`).append(`<a href= "${favLinks[i].recipeLink}">${favList[i].recipeName}</a><br>`)
     }
 }
 
+
+// Toggles the display for the recipe to be shown if it is currently hidden
 function displayCard (){
     var recipeCards = document.querySelector('.recipe-card')
     if(window.getComputedStyle(recipeCards).display === "none"){
@@ -149,5 +156,5 @@ function displayCard (){
     }
 
 }
-
+// Calls the favorite display
 displayFavorite()
