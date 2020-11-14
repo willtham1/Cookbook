@@ -112,6 +112,14 @@ function generateRecipes() {
     })
 }
 
+$(`.save-button`).on('click', function(event){
+    event.preventDefault()
+    var savedRecipe = $(this).siblings()[0].href
+    console.log($(this).siblings()[0].href)
+    storeFavorite(savedRecipe)
+})
+
+
 function storeFavorite(favorite) {
     var favList = JSON.parse(localStorage.getItem("Favorite Recipes") || "[]")
     favList.push({favorite})
