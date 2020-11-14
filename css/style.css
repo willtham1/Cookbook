@@ -59,3 +59,7 @@ footer.page-footer {
 .parallax {
   opacity: 0.75;
 }
+
+.recipe-card {
+  display: none;
+}
