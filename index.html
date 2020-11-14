@@ -58,16 +58,31 @@
     </div>
     <div class="parallax"><img src="background1.jpg" alt="img1"></div>
   </div>
-
-
   <div class="container">
     <div class="section">
+
+      <div id="newModal" class="modal">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>modal header</h2>
+          </div>
+          <div class="modal-body">
+            <p>Do you want to add this recipe to your favorites?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="decline modal-close waves-ffect waves-red btn-flat">No</a>
+            <a href="#!" class="confirm modal-close waves-ffect waves-green btn-flat">Yes</a>
+          </div>
+        </div>
+      </div>
 
       <!--   Recipe List Blocks   -->
       <div class="row">
         <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <button class="btn-floating save-button"><i class="material-icons">add</i></button>
             <a href="" id="recipe1-title"></a>
             <p id="recipe1-ingredients"></p>
             <img src="" id="recipe1-image" alt="recipe image">
@@ -200,7 +215,7 @@
             want to try in the search bar (you can select types of meat, spices, veggies, and much more). Hit the search
             recipes button and a collection of different recipes will appear giving you a vast amount of different foods
             to try. You may also substitute ingredients by selecting a specific ingrdient and using the substitute
-            ingredients button and a list of options will appear. Add your favorite recipes by slecting the + button next to the recipe field.
+            ingredients button and a list of options will appear. Add your favorite recipes by selecting the + button next to the recipe field.
           </p>
         </div>
       </div>

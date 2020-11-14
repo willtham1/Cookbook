@@ -1,5 +1,7 @@
-var pageNumber
-var recipeList
+$(document).ready(function(){
+
+    var pageNumber
+    var recipeList
 
 
 // Display the previous page of results
@@ -118,9 +120,15 @@ function generateRecipes() {
 // When a save button is clicked, grab the name and url, call local storage function
 $(`.save-button`).on('click', function(event){
     event.preventDefault()
-    var savedRecipe = $(this).siblings()[0].href
+    var recipeLink = $(this).siblings()[0].href
     var recipeName = $(this).siblings()[0].textContent
-    storeFavorite(savedRecipe, recipeName)
+    displayModal(recipeLink, recipeName)
+})
+
+// Add clear favorite button
+$(`.clear-favorites`).on('click',  function(event){
+    event.preventDefault()
+    clearFavorites()
 })
 
 // Stores the recipe name and the URL into local storage.
@@ -146,7 +154,7 @@ function displayFavorite(){
 }
 
 
-// Toggles the display for the recipe to be shown if it is currently hidden
+// Toggles the display for the recipe to be shown if it is currently hidden.
 function displayCard (){
     var recipeCards = document.querySelector('.recipe-card')
     if(window.getComputedStyle(recipeCards).display === "none"){
@@ -156,5 +164,43 @@ function displayCard (){
     }
 
 }
-// Calls the favorite display
+
+// Function to clear local storage when the clear favorites button is clicked.
+function clearFavorites (){
+    $(`.favDisplay`).html('')
+    localStorage.clear()
+}
+
+function displayModal (recipeLink, recipeName){
+    var modal = $("#newModal")
+    var close = $(".close")
+
+    var confirm = $('.confirm')
+    var decline = $('.decline')
+
+    modal.css('display', 'block')
+
+    confirm.on('click', () =>{
+        storeFavorite(recipeLink, recipeName)
+        modal.css('display', 'none')
+    })
+    decline.on('click', () =>{
+        modal.css('display', 'none')
+    })
+
+
+    close.on('click', () => {
+            modal.css('display', 'none')
+        })
+
+    window.onclick = function(event) {
+        if(event.target==modal) {
+            modal.css('display', 'none')
+        }
+    }
+
+}
+
+
 displayFavorite()
+})
