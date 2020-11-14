@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cookbook</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
+
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="index.html" class="brand-logo"><img width="75" height="auto" src= "./assets/cookbooklogo2.png"></a>
+      <a id="logo-container" href="index.html" class="brand-logo"><img width="75" height="auto"
+          src="./assets/cookbooklogo2.png"></a>
       <ul id='dropdown1' class="right hide-on-med-and-down">
         <li><a href="index2.html">Keep it simple.</a></li>
         <li><a href="signup.html">Sign Up</a></li>
@@ -36,13 +39,15 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Cookbook</h1>
         <div class="row center">
-          <h5 class="header col s12 light">Are you bored of cooking the same food? Try our search recipes button for a surprise!</h5>
+          <h5 class="header col s12 light">Are you bored of cooking the same food? Try our search recipes button for a
+            surprise!</h5>
         </div>
         <div class="row center">
-          <input id = 'userInput' type="text" placeholder="Enter your ingredients separated by a comma( , ).">
-          <button href="#!" id="search-button" class="btn-large waves-effect waves-light teal lighten-1">Search Recipes</button>
+          <input id='userInput' type="text" placeholder="Enter your ingredients separated by a comma( , ).">
+          <button href="#!" id="search-button" class="btn-large waves-effect waves-light teal lighten-1">Search
+            Recipes</button>
           <a class="waves-effect waves-light btn" button id="previous-button">Previous</a>
-          <a class="waves-effect waves-light btn" button id="next-button" >Next</a>
+          <a class="waves-effect waves-light btn" button id="next-button">Next</a>
         </div>
         <br><br>
 
@@ -57,111 +62,109 @@
 
       <!--   Recipe List Blocks   -->
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe1-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe1-title"></a>
             <p id="recipe1-ingredients"></p>
             <img src="" id="recipe1-image" alt="recipe image">
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe2-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe2-title"></a>
             <p id="recipe2-ingredients"></p>
             <img src="" id="recipe2-image" alt="recipe image">
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe3-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe3-title"></a>
             <p id="recipe3-ingredients"></p>
             <img src="" id="recipe3-image" alt="recipe image">
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe4-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe4-title"></a>
             <p id="recipe4-ingredients"></p>
             <img src="" id="recipe4-image" alt="recipe image">
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe5-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe5-title"></a>
             <p id="recipe5-ingredients"></p>
             <img src="" id="recipe5-image" alt="recipe image">
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe6-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe6-title"></a>
             <p id="recipe6-ingredients"></p>
             <img src="" id="recipe6-image" alt="recipe image">
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe7-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe7-title"></a>
             <p id="recipe7-ingredients"></p>
             <img src="" id="recipe7-image" alt="recipe image">
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe8-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe8-title"></a>
             <p id="recipe8-ingredients"></p>
             <img src="" id="recipe8-image" alt="recipe image">
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a href= ""  id="recipe9-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe9-title"></a>
             <p id="recipe9-ingredients"></p>
             <img src="" id="recipe9-image" alt="recipe image">
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
             <a></a>
             <p></p>
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
-            <a  href= "" id="recipe10-title"></a>
+            <a class="btn-floating save-button"><i class="material-icons">add</i></a>
+            <a href="" id="recipe10-title"></a>
             <p id="recipe10-ingredients"></p>
             <img src="" id="recipe10-image" alt="recipe image">
           </div>
         </div>
 
 
-        <div class="col s12 m4">
+        <div class="col s12 m4 recipe-card">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons"></i></h2>
             <a></a>
             <p></p>
           </div>
@@ -190,8 +193,12 @@
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
           <h4></h4>
-          <p class="left-align light">How to use our website: The Cookbook - Type any ingredient that you are craving or want to try in the search bar (you can select types of meat, spices, veggies, and much more). Hit the search recipes button and a collection of different recipes will appear giving you a vast amount of different foods to try. You may also substitute ingredients by selecting a specific ingrdient and using the substitute ingredients button and a list of options will appear. 
-             </p>
+          <p class="left-align light">How to use our website: The Cookbook - Type any ingredient that you are craving or
+            want to try in the search bar (you can select types of meat, spices, veggies, and much more). Hit the search
+            recipes button and a collection of different recipes will appear giving you a vast amount of different foods
+            to try. You may also substitute ingredients by selecting a specific ingrdient and using the substitute
+            ingredients button and a list of options will appear.
+          </p>
         </div>
       </div>
 
@@ -203,7 +210,8 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Team Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job.</p>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our
+            full time job.</p>
 
 
         </div>
@@ -220,20 +228,18 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made with <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        Made with <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
     </div>
   </footer>
 
 
   <!--  Scripts-->
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"
-></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
   <script src="js/script.js"></script>
-  </body>
+</body>
+
 </html>

@@ -34,17 +34,17 @@ $('#search-button').on('click', function(event){
     
 })
 
-// Add replace button
 $('#replace-button').on('click', function(event){
     event.preventDefault()
     replaceIngredient()
 
 })
+// Favorite button will be on each recipe, clicking it will add it to the favorite recipes local storage.
+$('.favorite-button').on('click', function(event){
+    event.preventDefault()
+    storeFavorite(this.parent())
+})
 
-
-// Spoonacular API starter
-// API call works
-// variable will be used to store user input later on.
 
 function replaceIngredient() {
     // Add replace ingredient text input field.
@@ -64,12 +64,16 @@ function replaceIngredient() {
         url: ingredientURL,
         method: 'GET'
     }).then(function (response) {
-        console.log(response.message)
         ingredient.html(`Substitutes for: ${userIngredient}`)
-        for (var i = 0; i < response.substitutes.length; i++){
-            results.append(`<li>${response.substitutes[i]}</li>`)
-            console.log(response.substitutes[i])
+
+        if(response.substitutes){
+            for (var i = 0; i < response.substitutes.length; i++){
+                results.append(`<li>${response.substitutes[i]}</li>`)
+            }
+        } else {
+            results.append(`<li>${response.message}</li>`)
         }
+
     })
 }
 
@@ -85,6 +89,7 @@ function generateRecipes() {
     }).then(function (response) {
         console.log(JSON.parse(response));
         // Grab response with JSON, due to the response being returned as a string
+        displayCard()
         recipeList = JSON.parse(response)
         for (var i = 0; i < recipeList.results.length; i++) {
 
@@ -98,9 +103,35 @@ function generateRecipes() {
             $(`#recipe${i+1}-title`).html(title)
             $(`#recipe${i+1}-ingredients`).html(ingredients)
             $(`#recipe${i+1}-title`).attr('href', url)
-            $(`#recipe${i+1}-image`).attr('src', image)
+            if(image){
+                $(`#recipe${i+1}-image`).attr('src', image)
+            } else {
+                $(`#recipe${i+1}-image`).attr('src', 'http://img.recipepuppy.com/9.jpg')                
+            }
         };
     })
 }
 
-    
+$(`.save-button`).on('click', function(event){
+    event.preventDefault()
+    var savedRecipe = $(this).siblings()[0].href
+    console.log($(this).siblings()[0].href)
+    storeFavorite(savedRecipe)
+})
+
+
+function storeFavorite(favorite) {
+    var favList = JSON.parse(localStorage.getItem("Favorite Recipes") || "[]")
+    favList.push({favorite})
+    localStorage.setItem('Favorite Recipes', JSON.stringify(favList))
+}    
+
+function displayCard (){
+    var recipeCards = document.querySelector('.recipe-card')
+    if(window.getComputedStyle(recipeCards).display === "none"){
+        $(`.recipe-card`).toggle()
+    } else {
+        return
+    }
+
+}
