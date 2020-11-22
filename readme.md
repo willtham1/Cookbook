@@ -8,6 +8,7 @@ The goals of this app are as follows:
     Allow a user to search for replacement ingredients to ingredients they do not want to use
     Allow a user to save their favorite recipes for reference later
 
+My primary task for this app was to work on the Javascript logic behind the scenes, in order to make the app display the appropriate results.
 
 In order to accomplish these task, our app uses the RecipePuppy API to find new recipes, and the Spoonacular Recipe Substitute API in order to find replacement items. The favorite recipes are saved via localstorage.
 
