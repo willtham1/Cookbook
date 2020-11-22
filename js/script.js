@@ -45,7 +45,7 @@ $(document).ready(function () {
     function replaceIngredient() {
         // Add replace ingredient text input field.
         var userIngredient = $('#userIngredient').val().trim()
-        var apiKey = 'fdea7c2ea8d1434eb3207d8b48260907'
+        var apiKey = '902ffbba4a7041a0a7fa75ae310d7727'
         var ingredientURL = `https://api.spoonacular.com/food/ingredients/substitutes?apiKey=${apiKey}&ingredientName=${userIngredient}`
         var results = $(`#new-ingredients`)
         var ingredient = $(`#ingredient-name`)
