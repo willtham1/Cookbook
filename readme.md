@@ -1,4 +1,4 @@
-# [Cookbook - Recipe Search and Ingredient Substitution](https://willtham1.github.io/first.project/)
+# [Cookbook - Recipe Search and Ingredient Substitution](https://willtham1.github.io/Cookbook/)
 
 Welcome to our recipe searching app! This app was created through the collaboration of 3 developers. Their github links are available on the contributors tab on the side bar.
 
